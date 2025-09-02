@@ -4,13 +4,13 @@ pipeline {
     environment {
         DOCKER_IMAGE = "train-ticket-reservation"
         DOCKER_TAG = "latest"   // Or use BUILD_NUMBER for unique tags
-        DOCKERHUB_USER = "your-dockerhub-username"
+        DOCKERHUB_USER = "vijay3247"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-user/Train-Ticket-Reservation-System.git'
+                git branch: 'main', url: ''
             }
         }
 
