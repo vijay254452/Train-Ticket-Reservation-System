@@ -1,14 +1,15 @@
-# Use official OpenJDK as base
-FROM openjdk:17-jdk-slim
+# Use official Tomcat base image
+FROM tomcat:9.0-jdk17
 
-# Set work directory
-WORKDIR /app
+# Remove default ROOT app (optional)
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
-# Copy jar file (assuming Maven/Gradle build outputs to target/*.jar)
-COPY target/train-ticket-reservation-system-0.0.1-SNAPSHOT.jar app.jar
+# Copy your WAR file into Tomcat webapps directory
+# Assuming your Maven/Gradle build creates target/TrainTicketReservationSystem.war
+COPY target/TrainTicketReservationSystem.war /usr/local/tomcat/webapps/ROOT.war
 
-# Expose port
+# Expose Tomcat default port
 EXPOSE 8080
 
-# Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Start Tomcat
+CMD ["catalina.sh", "run"]
