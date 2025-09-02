@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/vijay/train-ticket-system.git'
+                git branch: 'main', url: 'https://github.com/vijay254452/train-ticket-system.git'
             }
         }
 
@@ -45,7 +45,7 @@ pipeline {
                 sh """
                     docker stop train-ticket || true
                     docker rm train-ticket || true
-                    docker run -d --name train-ticket -p 8080:8080 $DOCKER_IMAGE:$DOCKER_TAG
+                    docker run -d --name train-ticket -p 9999:8080 $DOCKER_IMAGE:$DOCKER_TAG
                 """
             }
         }
