@@ -9,7 +9,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/vijay254452/train-ticket-system.git'
+                git branch: 'master',
+                    credentialsId: 'github-credentials',
+                     url: 'https://github.com/vijay254452/train-ticket-system.git'
             }
         }
 
